@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ReactiveRabbitmqAppApplication {
+public class ReactiveRabbitMQApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ReactiveRabbitmqAppApplication.class, args);
+		SpringApplication.run(ReactiveRabbitMQApplication.class, args);
 	}
 
 }

@@ -1,6 +1,6 @@
 plugins {
     id 'org.springframework.boot' version '2.7.1'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.13.RELEASE'
     id 'java'
 }
 
@@ -12,6 +12,13 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+    all*.exclude module: 'spring-boot-starter-logging'
+}
+
 ext {
     set('springCloudVersion', "2021.0.3")
 }
@@ -21,6 +28,14 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-amqp'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
+
+    annotationProcessor 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok'
+
+    implementation 'com.lmax:disruptor:3.4.4'
+    implementation 'org.apache.logging.log4j:log4j-api:2.18.0'
+    implementation 'org.apache.logging.log4j:log4j-core:2.18.0'
+    implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.18.0'
 
     implementation 'io.projectreactor.rabbitmq:reactor-rabbitmq:1.5.5'
     implementation 'com.rabbitmq:amqp-client:5.15.0'
